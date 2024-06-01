@@ -1,0 +1,6 @@
+extends index
+
+block content
+  h1 Lista de Produtos
+  each produto in produtos
+    p= produto.nome + ' - ' + produto.preco

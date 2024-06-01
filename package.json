@@ -1,0 +1,33 @@
+{
+  "name": "sistema-gerenciamento",
+  "version": "1.0.0",
+  "description": "Um sistema simples de gerenciamento para clientes e produtos.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheuscampera/projetogustavo.git"
+  },
+  "author": "Matheus Campera e Ana Beatriz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheuscampera/projetogustavo/issues"
+  },
+  "homepage": "https://github.com/matheuscampera/projetogustavo#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.19.2",
+    "express-generator": "^4.16.1",
+    "express-validator": "^6.14.0",
+    "git": "^0.1.5",
+    "http-errors": "^1.8.0",
+    "jade": "^1.11.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.10.0",
+    "node-cache": "^5.1.2",
+    "pug": "^3.0.3"
+  }
+}
