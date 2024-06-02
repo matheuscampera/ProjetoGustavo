@@ -17,10 +17,9 @@ exports.validateCliente = [
 
 // Middleware para validar os campos de um produto
 exports.validateProduto = [
-    body('nome').notEmpty().withMessage('Nome é obrigatório').isString().withMessage('Nome deve ser uma string'),
-    body('descricao').notEmpty().withMessage('Descrição é obrigatória').isString().withMessage('Descrição deve ser uma string'),
-    body('preco').isDecimal().withMessage('Preço deve ser um número decimal'),
-    body('data_atualizado').optional().isISO8601().withMessage('Data deve ser válida e no formato ISO 8601'),
+    body('nomeProduto').notEmpty().withMessage('Nome do produto é obrigatório').isString().withMessage('Nome do produto deve ser uma string'),
+    body('descricaoProduto').notEmpty().withMessage('Descrição do produto é obrigatória').isString().withMessage('Descrição do produto deve ser uma string'),
+    body('precoProduto').isDecimal().withMessage('Preço do produto deve ser um número decimal'),
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

@@ -1,13 +1,14 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
+const bodyParser = require('body-parser');  // Para lidar com dados de formulário
+const morgan = require('morgan');  // Para log de requisições HTTP
 const dotenv = require('dotenv');
 
 // Configurações de ambiente
 dotenv.config();
 
 // Rotas
-const cadastroRoutes = require('./routes/cadastro');
+const clienteRoutes = require('./routes/clientes');
+const produtoRoutes = require('./routes/produtos');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,7 +20,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Configuração do motor de visualização para Pug (anteriormente Jade)
+// Configuração do motor de visualização para Jade/Pug
 app.set('view engine', 'pug');
 app.set('views', './views');
 
@@ -28,8 +29,9 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-// Usando a nova rota de cadastro
-app.use('/', cadastroRoutes);
+// Usando rotas de clientes e produtos
+app.use('/clientes', clienteRoutes);
+app.use('/produtos', produtoRoutes);
 
 // Middleware para tratamento de erros 404 (página não encontrada)
 app.use((req, res, next) => {

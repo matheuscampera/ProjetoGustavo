@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require('express').Router();
+const router = express.Router();
 const clientesController = require('../controllers/clientesController');
 const { validateCliente } = require('../middlewares/validateRequest');
 
@@ -17,8 +17,5 @@ router.put('/:id', validateCliente, clientesController.atualizarCliente);
 
 // Rota para deletar um cliente por ID
 router.delete('/:id', clientesController.deletarCliente);
-
-// Rota para criar um cliente via formulário
-router.post('/', clientesController.criarCliente);
 
 module.exports = router;

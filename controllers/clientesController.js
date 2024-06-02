@@ -27,7 +27,7 @@ exports.getCliente = async (req, res, next) => {
 exports.criarCliente = async (req, res) => {
     try {
         const novoCliente = await ClienteService.criar(req.body);
-        res.render('success');  // Renderiza a página de sucesso após cadastro
+        res.render('successCliente');  // Renderiza a página de sucesso após cadastro
     } catch (error) {
         console.error('Erro ao criar cliente:', error);
         res.status(500).send(error.message);
