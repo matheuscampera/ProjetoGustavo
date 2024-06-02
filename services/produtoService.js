@@ -11,14 +11,14 @@ exports.buscarPorId = async (id) => {
 };
 
 exports.criar = async (produto) => {
-    const { nome, descricao, preco } = produto;
-    const [result] = await pool.promise().query('INSERT INTO produtos (nome, descricao, preco) VALUES (?, ?, ?)', [nome, descricao, preco]);
+    const { nome, descricao, preco, data_atualizado } = produto;
+    const [result] = await pool.promise().query('INSERT INTO produtos (nome, descricao, preco, data_atualizado) VALUES (?, ?, ?, ?)', [nome, descricao, preco, data_atualizado]);
     return { id: result.insertId, ...produto };
 };
 
 exports.atualizar = async (id, produto) => {
-    const { nome, descricao, preco } = produto;
-    await pool.promise().query('UPDATE produtos SET nome = ?, descricao = ?, preco = ? WHERE id = ?', [nome, descricao, preco, id]);
+    const { nome, descricao, preco, data_atualizado } = produto;
+    await pool.promise().query('UPDATE produtos SET nome = ?, descricao = ?, preco = ?, data_atualizado = ? WHERE id = ?', [nome, descricao, preco, data_atualizado, id]);
     return { id, ...produto };
 };
 
