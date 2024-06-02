@@ -26,7 +26,8 @@ exports.getCliente = async (req, res, next) => {
 
 exports.criarCliente = async (req, res) => {
     try {
-        const novoCliente = await ClienteService.criar(req.body);
+        const { nome, sobrenome, email, idade } = req.body;
+        const novoCliente = await ClienteService.criar({ nome, sobrenome, email, idade });
         res.render('successCliente');  // Renderiza a página de sucesso após cadastro
     } catch (error) {
         console.error('Erro ao criar cliente:', error);
@@ -36,7 +37,8 @@ exports.criarCliente = async (req, res) => {
 
 exports.atualizarCliente = async (req, res, next) => {
     try {
-        const clienteAtualizado = await ClienteService.atualizar(req.params.id, req.body);
+        const { nome, sobrenome, email, idade } = req.body;
+        const clienteAtualizado = await ClienteService.atualizar(req.params.id, { nome, sobrenome, email, idade });
         res.send(clienteAtualizado);
     } catch (error) {
         console.error('Erro ao atualizar cliente:', error);

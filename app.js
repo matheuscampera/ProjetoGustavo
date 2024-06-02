@@ -20,7 +20,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Configuração do motor de visualização para Jade/Pug
+// Configuração do motor de visualização para Pug (anteriormente Jade)
 app.set('view engine', 'pug');
 app.set('views', './views');
 

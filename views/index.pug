@@ -1,38 +1,137 @@
 doctype html
-html
+html(lang="pt-br")
   head
-    title Cadastro de Cliente e Produto
-    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Sistema de Gerenciamento
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 2.5em;
+      }
+      nav {
+        background-color: #343a40;
+        color: #fff;
+        overflow: hidden;
+      }
+      nav a {
+        float: left;
+        display: block;
+        color: #fff;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+      }
+      nav a:hover {
+        background-color: #007bff;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+      h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+      }
+      form {
+        background: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      form div {
+        margin-bottom: 15px;
+      }
+      form label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      form input[type="text"],
+      form input[type="email"],
+      form input[type="number"],
+      form input[type="datetime-local"],
+      form button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      form button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+      form button:hover {
+        background-color: #0056b3;
+      }
+      footer {
+        background-color: #343a40;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        font-size: 0.8em;
+      }
   body
+    header
+      h1 Sistema de Gerenciamento
+    nav
+      a(href="#") Home
+      a(href="#cadastro-produto") Cadastrar Produto
+      a(href="#cadastro-cliente") Cadastrar Cliente
     .container
-      .row
-        .col-md-6.offset-md-3
-          h1.text-center Cadastro de Cliente
-          form(method="POST", action="/clientes")
-            .form-group
-              label(for="nome") Nome
-              input.form-control(type="text", name="nome", id="nome", required)
-            .form-group
-              label(for="sobrenome") Sobrenome
-              input.form-control(type="text", name="sobrenome", id="sobrenome", required)
-            .form-group
-              label(for="email") Email
-              input.form-control(type="email", name="email", id="email", required)
-            .form-group
-              label(for="idade") Idade
-              input.form-control(type="number", name="idade", id="idade", required)
-            button.btn.btn-primary(type="submit") Cadastrar Cliente
-      .row.mt-5
-        .col-md-6.offset-md-3
-          h1.text-center Cadastro de Produto
-          form(method="POST", action="/produtos")
-            .form-group
-              label(for="nomeProduto") Nome do Produto
-              input.form-control(type="text", name="nomeProduto", id="nomeProduto", required)
-            .form-group
-              label(for="descricaoProduto") Descrição do Produto
-              input.form-control(type="text", name="descricaoProduto", id="descricaoProduto", required)
-            .form-group
-              label(for="precoProduto") Preço do Produto
-              input.form-control(type="number", step="0.01", name="precoProduto", id="precoProduto", required)
-            button.btn.btn-primary(type="submit") Cadastrar Produto
+      section#cadastro-produto
+        h2 Cadastro de Produto
+        form(action="/produtos" method="POST")
+          div
+            label(for="nome") Nome:
+            input(type="text" name="nome" id="nome" required)
+          div
+            label(for="descricao") Descrição:
+            input(type="text" name="descricao" id="descricao" required)
+          div
+            label(for="preco") Preço:
+            input(type="text" name="preco" id="preco" required)
+          div
+            label(for="data_atualizado") Data Atualizado:
+            input(type="datetime-local" name="data_atualizado" id="data_atualizado")
+          div
+            button(type="submit") Cadastrar Produto
+      section#cadastro-cliente
+        h2 Cadastro de Cliente
+        form(action="/clientes" method="POST")
+          div
+            label(for="nome") Nome:
+            input(type="text" name="nome" id="nome" required)
+          div
+            label(for="sobrenome") Sobrenome:
+            input(type="text" name="sobrenome" id="sobrenome" required)
+          div
+            label(for="email") Email:
+            input(type="email" name="email" id="email" required)
+          div
+            label(for="idade") Idade:
+            input(type="number" name="idade" id="idade" required)
+          div
+            button(type="submit") Cadastrar Cliente
+    footer
+      p &copy; 2024 Sistema de Gerenciamento. Todos os direitos reservados.

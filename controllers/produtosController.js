@@ -1,7 +1,6 @@
 const ProdutoService = require('../services/produtoService');
 const httpError = require('http-errors');
 
-// Buscar todos os produtos
 exports.getTodosProdutos = async (req, res, next) => {
     try {
         const todosProdutos = await ProdutoService.buscarTodos();
@@ -12,7 +11,6 @@ exports.getTodosProdutos = async (req, res, next) => {
     }
 };
 
-// Buscar produto por ID
 exports.getProduto = async (req, res, next) => {
     try {
         const produto = await ProdutoService.buscarPorId(req.params.id);
@@ -26,10 +24,10 @@ exports.getProduto = async (req, res, next) => {
     }
 };
 
-// Criar um novo produto
 exports.criarProduto = async (req, res) => {
     try {
-        const novoProduto = await ProdutoService.criar(req.body);
+        const { nome, descricao, preco, data_atualizado } = req.body;
+        const novoProduto = await ProdutoService.criar({ nome, descricao, preco, data_atualizado });
         res.render('successProduto');  // Renderiza a página de sucesso após cadastro
     } catch (error) {
         console.error('Erro ao criar produto:', error);
@@ -37,10 +35,10 @@ exports.criarProduto = async (req, res) => {
     }
 };
 
-// Atualizar produto por ID
 exports.atualizarProduto = async (req, res, next) => {
     try {
-        const produtoAtualizado = await ProdutoService.atualizar(req.params.id, req.body);
+        const { nome, descricao, preco, data_atualizado } = req.body;
+        const produtoAtualizado = await ProdutoService.atualizar(req.params.id, { nome, descricao, preco, data_atualizado });
         res.send(produtoAtualizado);
     } catch (error) {
         console.error('Erro ao atualizar produto:', error);
@@ -48,7 +46,6 @@ exports.atualizarProduto = async (req, res, next) => {
     }
 };
 
-// Deletar produto por ID
 exports.deletarProduto = async (req, res, next) => {
     try {
         await ProdutoService.deletar(req.params.id);
