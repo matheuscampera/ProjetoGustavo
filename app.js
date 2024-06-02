@@ -7,8 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Rotas
-const clienteRoutes = require('./routes/clientes');
-const produtoRoutes = require('./routes/produtos');
+const cadastroRoutes = require('./routes/cadastro');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,9 +28,8 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-// Usando rotas de clientes e produtos
-app.use('/clientes', clienteRoutes);
-app.use('/produtos', produtoRoutes);
+// Usando a nova rota de cadastro
+app.use('/', cadastroRoutes);
 
 // Middleware para tratamento de erros 404 (página não encontrada)
 app.use((req, res, next) => {

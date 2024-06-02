@@ -1,42 +1,33 @@
 doctype html
 html
   head
-    title Cadastro de Clientes e Produtos
+    title Cadastro de Cliente e Produto
     link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
-    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
-    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")
-    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
   body
     .container
       .row
         .col-md-6.offset-md-3
-          h1.text-center.mt-5 Cadastro de Clientes
-          form(method="POST", action="/clientes")
+          h1.text-center Cadastro de Cliente e Produto
+          form(method="POST", action="/cadastro")
             .form-group
-              label(for="nome") Nome:
-              input.form-control(type="text", name="nome", required=true)
+              label(for="nomeCliente") Nome do Cliente
+              input.form-control(type="text", name="nomeCliente", id="nomeCliente", required)
             .form-group
-              label(for="sobrenome") Sobrenome:
-              input.form-control(type="text", name="sobrenome", required=true)
+              label(for="sobrenomeCliente") Sobrenome do Cliente
+              input.form-control(type="text", name="sobrenomeCliente", id="sobrenomeCliente", required)
             .form-group
-              label(for="email") Email:
-              input.form-control(type="email", name="email", required=true)
+              label(for="emailCliente") Email do Cliente
+              input.form-control(type="email", name="emailCliente", id="emailCliente", required)
             .form-group
-              label(for="idade") Idade:
-              input.form-control(type="number", name="idade", required=true)
-            button.btn.btn-primary(type="submit") Cadastrar Cliente
-
-      .row
-        .col-md-6.offset-md-3
-          h1.text-center.mt-5 Cadastro de Produtos
-          form(method="POST", action="/produtos")
+              label(for="idadeCliente") Idade do Cliente
+              input.form-control(type="number", name="idadeCliente", id="idadeCliente", required)
             .form-group
-              label(for="nome") Nome do Produto:
-              input.form-control(type="text", name="nome", required=true)
+              label(for="nomeProduto") Nome do Produto
+              input.form-control(type="text", name="nomeProduto", id="nomeProduto", required)
             .form-group
-              label(for="descricao") Descrição:
-              input.form-control(type="text", name="descricao")
+              label(for="descricaoProduto") Descrição do Produto
+              input.form-control(type="text", name="descricaoProduto", id="descricaoProduto", required)
             .form-group
-              label(for="preco") Preço:
-              input.form-control(type="text", name="preco", required=true)
-            button.btn.btn-primary(type="submit") Cadastrar Produto
+              label(for="precoProduto") Preço do Produto
+              input.form-control(type="number", step="0.01", name="precoProduto", id="precoProduto", required)
+            button.btn.btn-primary(type="submit") Cadastrar
